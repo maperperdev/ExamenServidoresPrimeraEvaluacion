@@ -9,8 +9,9 @@
 </head>
 <body>
 	<div>
-		<c:set var="usuarioLogueado"
-			value="${sessionScope.usuarioLogueado}" scope="page" />
+	<c:if test="${not empty sessionScope.usuarioLogueado}">
+			<c:set var="usuarioLogueado" value="${sessionScope.usuarioLogueado}" scope="page" />
+	</c:if>
 		<div>
 
 			<c:choose>
@@ -27,9 +28,9 @@
 						<c:out value="${usuarioLogueado.correoElectronico}" />
 					</p>
 					<form
-						action="${pageContext.request.contextPath}/ControladorUsuario"
+						action="${pageContext.request.contextPath}/ServletUsuarioLogout"
 						method="post">
-						<input type="submit" name="intruccion" value="Cerrar sesión">
+						<input type="submit" value="Cerrar sesión">
 					</form>
 				</c:otherwise>
 			</c:choose>
