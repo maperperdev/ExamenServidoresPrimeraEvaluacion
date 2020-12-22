@@ -71,18 +71,22 @@ public class ServletUsuarioEditar extends HttpServlet {
 		String fechaRegistro = usuario.getFechaRegistro();
 		String fechaModificacion = LocalDate.now().toString();
 		boolean cambiarContrasenia = false;
+		
+		if (request.getParameter("eleccion").equals("SI")) {
+			cambiarContrasenia = true;
+		}
 
 		usuarioId = usuario.getIdUsuario();
 		nombre = request.getParameter("nombre");
 		apellido = request.getParameter("apellido");
-		System.out.println(apellido);
 		fechaNacimientoSTR = request.getParameter("fechaNacimiento");
 		correoElectronico = request.getParameter("correoElectronico");
 
 		if (cambiarContrasenia) {
 			contraseniaAntigua = request.getParameter("contraseniaAntigua");
-			contrasenia = request.getParameter("contrasenia");
-			contraseniaRepetida = request.getParameter("contraseniaRepetida");
+			contrasenia = request.getParameter("contraseniaNueva");
+			contraseniaRepetida = request.getParameter("contraseniaNuevaRepetida");
+			System.out.println(contraseniaAntigua + "\n" + contrasenia);
 		} else {
 			contrasenia = usuario.getContrasenia();
 		}

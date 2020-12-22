@@ -141,8 +141,7 @@ public class DaoUsuario implements IDaoUsuario {
 			ps.setString(5, usuario.getContrasenia());
 			ps.setDate(6, Date.valueOf(usuario.getFechaModificacion()));
 			ps.setInt(7, usuario.getIdUsuario());
-			result = ps.execute();
-			System.out.println("result: " + result);
+			result = !ps.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
